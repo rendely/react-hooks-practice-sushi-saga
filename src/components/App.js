@@ -17,8 +17,8 @@ function App() {
     .then(sushis => setSushis(sushis))
   }
   
-  function handleEatPlate(price){
-    setPlates([...plates,0]);
+  function handleEatPlate(id, price){
+    setPlates([...plates,id]);
     setBudget(budget - price);
   }
 
@@ -26,6 +26,7 @@ function App() {
     <div className="app">
       <SushiContainer 
         sushis={sushis} 
+        plates={plates}
         budget={budget}
         onEatPlate={handleEatPlate} 
       />

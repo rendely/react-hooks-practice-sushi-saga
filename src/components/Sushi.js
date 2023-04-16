@@ -7,7 +7,7 @@ function Sushi({sushi, onEatPlate, budget}) {
   function handleClickSushi(){
     if (budget >= sushi.price){
       setIsEaten(true);
-      onEatPlate(sushi.price);
+      onEatPlate(sushi.id, sushi.price);
     }else{
       console.log('Too expensive');
     }
@@ -17,7 +17,7 @@ function Sushi({sushi, onEatPlate, budget}) {
     <div className="sushi">
       <div className="plate" onClick={handleClickSushi}>
         {/* Tell me if this sushi has been eaten! */}
-        {isEaten ? null : (
+        {sushi.isEaten ? null : (
           <img
             src={sushi.img_url}
             alt={sushi.name + "Sushi"}

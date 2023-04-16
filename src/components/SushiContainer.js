@@ -3,10 +3,16 @@ import MoreButton from "./MoreButton";
 import Sushi from "./Sushi";
 const numSushiToDisplay = 4;
 
-function SushiContainer({sushis, onEatPlate, budget}) {
+function SushiContainer({sushis, plates, budget, onEatPlate}) {
 
   const [sushiIndex, setSushiIndex] = useState(0);
-  const displayedSushis = sushis.slice(sushiIndex,sushiIndex+numSushiToDisplay);
+  console.log(sushiIndex, plates);
+  const displayedSushis = sushis
+    .slice(sushiIndex,sushiIndex+numSushiToDisplay)
+    .map(sushi => {
+      const isEaten = plates.find(plate => plate === sushi.id);
+      return {...sushi, isEaten:isEaten}
+    });
 
   function handleMoreClick(){
     if (sushiIndex < sushis.length-numSushiToDisplay){
