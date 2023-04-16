@@ -9,8 +9,11 @@ function SushiContainer({sushis, onEatPlate, budget}) {
   const displayedSushis = sushis.slice(sushiIndex,sushiIndex+numSushiToDisplay);
 
   function handleMoreClick(){
-    console.log('clicked');    
-    setSushiIndex(sushiIndex + numSushiToDisplay);
+    if (sushiIndex < sushis.length-numSushiToDisplay){
+      setSushiIndex(sushiIndex + numSushiToDisplay);
+    }else{
+      setSushiIndex(0);
+    }
   }
 
   return (
